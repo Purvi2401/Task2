@@ -22,33 +22,45 @@ const Counter = ({
 }) => {
   return (
     <div>
+      <p>Add another counter</p>
       <button onClick={() => addCounter()}>Add Counter</button>
       {counters.map((counter) => (
         <div key={counter.id}>
-          <h3>{counter.label}</h3>
+          <h2>{counter.label}</h2>
           <p>Value: {counter.value}</p>
-          <button onClick={() => incrementCounter(counter.id)}>
-            Increment
-          </button>
-          <button onClick={() => decrementCounter(counter.id)}>
-            Decrement
-          </button>
-          <button onClick={() => resetCounter(counter.id)}>Reset</button>
-          <input
-            type="text"
-            value={counter.label}
-            onChange={(e) => updateLabel(counter.id, e.target.value)}
-          />
-          <input
-            type="number"
-            value={counter.startValue}
-            onChange={(e) =>
-              setStartValue(counter.id, parseInt(e.target.value))
-            }
-          />
-          <button onClick={() => removeCounter(counter.id)}>
-            Remove Counter
-          </button>
+          <div>
+            <button onClick={() => incrementCounter(counter.id)}>
+              Increment
+            </button>
+            <button onClick={() => decrementCounter(counter.id)}>
+              Decrement
+            </button>
+            <button onClick={() => resetCounter(counter.id)}>Reset</button>
+          </div>
+          <div>
+            <h4>Rename Counter</h4>
+            <input
+              type="text"
+              value={counter.label}
+              onChange={(e) => updateLabel(counter.id, e.target.value)}
+            />
+          </div>
+          <div>
+            <h4>Set initial value</h4>
+            <input
+              type="number"
+              value={counter.startValue}
+              onChange={(e) =>
+                setStartValue(counter.id, parseInt(e.target.value))
+              }
+            />
+          </div>
+          <br></br>
+          <div>
+            <button onClick={() => removeCounter(counter.id)}>
+              Remove Counter
+            </button>
+          </div>
         </div>
       ))}
     </div>
